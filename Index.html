@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edukasi Alat Interaktif: Mikroskop</title>
+    <style>
+        :root {
+            --primary: #2c502d;
+            --accent: #0f800b;
+            --light: #ecf0f1;
+        }
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; margin: 0; background: #f4f7f6; color: var(--primary); }
+        header { background: var(--primary); color: white; padding: 2rem; text-align: center; }
+        
+        .container { max-width: 1000px; margin: auto; padding: 20px; }
+        
+        /* Bagian Gambar & Interaktif */
+        .interactive-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .tool-image-container { position: relative; text-align: center; }
+        .tool-image { max-width: 100%; border-radius: 10px; }
+
+        /* Penjelasan */
+        .description-box { padding: 20px; border-left: 5px solid var(--accent); background: #f9f9f9; }
+        
+        /* Tombol Interaktif */
+        .controls { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+        button {
+            padding: 10px 15px;
+            border: none;
+            background: var(--accent);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover { background: #2980b9; transform: translateY(-2px); }
+
+        /* Animasi Sederhana Cara Kerja */
+        #status-display {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #e67e22;
+            padding: 10px;
+            border: 1px dashed #e67e22;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Pengenalan Alat: ATG - Azterix Traffic Guard</h1>
+    <p>Penjelasan ATG - Azterix Traffic Guard</p>
+</header>
+
+<div class="container">
+    <div class="interactive-section">
+        <div class="tool-image-container">
+            <h3>Visualisasi Alat</h3>
+            <img src="image\gambar1.png" alt="ATG - Azterix Traffic Guard" class="tool-image">
+            <div id="status-display">Status: ATG Siap.</div>
+        </div>
+
+        <div class="info-container">
+            <h3>Penjelasan Alat</h3>
+            <p><strong>ATG - Azterix Traffic Guard</strong> adalah alat yang digunakan untuk mengawasi dan mengontrol aliran lalu lintas di area tertentu.</p>
+
+            <div class="description-box" id="detail-text">
+                Klik tombol di bawah untuk mempelajari bagian spesifik.
+            </div>
+
+            <div class="controls">
+                <button onclick="showDetail('lensa')">Alat Dan Bahan</button>
+                <button onclick="showDetail('revolver')">Fungsi Alat</button>
+                <button onclick="showDetail('meja')">Cara Kerja Secara Singkat</button>
+                <button onclick="simulateWork()">Simulasi Camera</button>
+            </div>
+        </div>
+    </div>
+
+    <section style="margin-top: 40px;">
+        <h3>Langkah-Langkah Cara Kerja:</h3>
+        <ol>
+            <li>PERTAMA FASE STANBAY: lampu Taffic Light Utama dalam posisi Hijau, Lampu Traffic Light Pedestrian Merah, dan Area Drop Off berjalan Otomatis.</li>
+            <li>PERTAMA KEDUA PENYEBRANGAN: Penyebrang berdiri di depan sensor ultrasonic. Kamera akan mendeteksi kepadatan jalan raya. Sistem akan delay selama 3 detik sebelum traffict light pedestrian menyala hijau. Buzzer menyalakan suara indikator.</li>
+            <li>PERTAMA KETIGA SELASI: Selama lampu penyeberangan menyala hijau, makaArea Drop-Off di non-aktifkan. Agar tidak mengganggu penyebrang. Seven segmen juga menghitung mundur berdasarkan waktu yang ditentukan. Waktu menyebrang habis dengan seven segment akan menampilkan "STOP".Setelah proses tersebut dijalankan. Lampu Traffic Light Pedestrian menyala merah, Lampu TrafficLight Utama menyalaHijau, dan Area Drop-Off Kembali berjalan  otomatis. </li>
+        </ol>
+    </section>
+</div>
+
+<script>
+    function showDetail(part) {
+        const text = document.getElementById('detail-text');
+        if(part === 'lensa') {
+            text.innerHTML = "<strong>Alat Dan Bahan:</strong> 1 buah Mikrokontroler Arduino Uno, 2 buah Motor Servo, 1 buah sensor ultrasonik, 5 buah modul Traffic Light, 2 buah Palang Pintu, 1 buah LED Display 7-Segmen, 1 buah buzzer, Kabel Jumper, baterai, dan kamera sebagai pendeteksi kepadatan jalan raya";
+        } else if(part === 'revolver') {
+            text.innerHTML = "<strong>Fungsi Alat:</strong>Fungsi Mikrokontroler Arduino Uno adalah sebagai otak yang memberikan perintah terhadap sensor, aktuator dan modul lainnya. Motor servo menggerakan palang pintu, Sensor Ultrasonik membaca jarak atau keberadaan kendaraan, Modul traffic light memberikan informasi Visual, Buzzer memberikan informasi Audio bagi disabilitas, Led Display memberikan informasi waktu, kabel sebagai jalur informasi, baterai sebagai sumber daya, dan alat-alat pendukung lainnya.";
+        } else if(part === 'meja') {
+            text.innerHTML = "<strong>Cara Kerja Secara Singkat:</strong>Pertama Fase Stand by : Lampu Traffic Light Utama dalam posisi Hijau, Lampu Traffic Light Pedestrian Merah, dan Area Drop Off berjalan Otomatis. Kedua Fase Penyebrangan : Penyebrang berdiri di depan sensor ultrasonic. Sistem akan delay selama 3 detik sebelum traffict light pedestrian menyala hijau.KETIGA FASE SELESA: Setelah proses tersebut dijalankan. Lampu Traffic Light Pedestrian menyala merah, Lampu Traffic Light Utama menyala Hijau, dan Area Drop-Off Kembali berjalan  ";
+        }
+    }
+
+    function simulateWork() {
+        const status = document.getElementById('status-display');
+        status.innerText = "Scan jalan...";
+        setTimeout(() => {
+            status.innerText = "Kondisi lalulintas lancar! ";
+            status.style.color = "#27ae60";
+        }, 2000);
+    }
+</script>
+
+</body>
+</html>
